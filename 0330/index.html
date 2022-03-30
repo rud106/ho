@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>제이쿼리쿠키를 활용한 팝업, 내비게이션</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <style>
       *{margin:0px;padding:0px;}
       ul,li,ol{list-style:none;}
@@ -14,6 +17,7 @@
         font-family:'맑은 고딕',arial,sans-serif;
         font-size:12px;
         color:#333;
+        overflow-x:hidden;
       }
       #wrap{
         width:100%;
@@ -79,6 +83,9 @@
       }
       .gnb a{color:#fff;}
 
+      /* 메인 */
+      main img{width:100%;}
+
       footer{background:#ffd8f0;}
       footer > address{
         font-style:normal;
@@ -93,7 +100,7 @@
     <script src="./script/jquery.cookie.js"></script>
     <script>
       $(document).ready(function(){
-
+        
         $('.toggle').click(function(){ //전체메뉴 클릭시
           $(this).find('.bar').eq(0).toggleClass('t_act01');
           $(this).find('.bar').eq(1).toggleClass('t_act02');
@@ -169,10 +176,28 @@
     <!-- 메인콘텐츠 영역 -->
     <main>
       <section>
-        <img src="./image/slide01_01.jpg" alt="">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="./image/slide01_01.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/slide02_02.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="./image/slide03_03.jpg" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
       </section>
     </main>
 
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+        },
+      });
+    </script>
     <!-- 푸터영역 서식 -->
     <footer>
       <address>
